@@ -7,7 +7,7 @@ If running locally add discord application token to .env and comment out keep_ru
 
 If running on https://replit.com/, keep "keep_running()" in main.py.
 Create a new Python Replit and upload both main.py and keep_running.py.
-Then on the left dashboard find the lock icon that says Sercets and click on it to add application token from discord.
+Then on the left dashboard find the lock icon that says secrets and click on it to add application token from discord.
 Name key "TOKEN" and value is the app application token.
 Then run the replit which might fail after install packages, if so, type 'kill 1' in the shell and wait for it to reconnect.
 Run the replit again and you should see the bot is active in your server and running on replit.
