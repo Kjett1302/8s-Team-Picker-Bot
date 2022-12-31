@@ -24,7 +24,7 @@ async def ping(ctx):
 
 @bot.command(name='listCommands')
 async def ping(ctx):
-    await ctx.send('Picker Commands: addMe, viewPool, viewTeam1, viewTeam2, clearPool, makeTeams, remove <Name> EX: !remove Bob, ping')
+    await ctx.send('Picker Commands: addMe, viewPool, viewTeam1, viewTeam2, clearPool, makeTeams, remove <Name> EX: !remove Bob, addOther <Name> EX: !addOther Jim, ping')
 
 
 @bot.command(name='viewPool')
@@ -55,6 +55,16 @@ async def addToPool(ctx):
     playerPool.append(userName)
     await ctx.send(userName + " has been added to player pool!")
 
+@bot.command(name='addOther')
+async def addOtherToPool(ctx):
+    userNameUnparsed = ctx.message.content
+    userNameParsed = userNameUnparsed.replace('!addOther ', '')
+    if userNameParsed != '' and userNameParsed != "!addOther":
+        playerPool.append(userNameParsed)
+        await ctx.send(userNameParsed + " has been added to player pool!")
+    if userNameParsed == '' or userNameParsed == "!addOther":
+        await ctx.send("Please enter a name Ex: !addOther Jim")
+
 
 @bot.command(name='makeTeams')
 async def makeTeams(ctx):
@@ -74,7 +84,9 @@ async def makeTeams(ctx):
         team2.append(playerPool[randomNumsArray[5]])
         team2.append(playerPool[randomNumsArray[6]])
         team2.append(playerPool[randomNumsArray[7]])
-        await ctx.send('Teams Made!')
+        await ctx.send("Teams Made!")
+        await ctx.send("Team 1: " + str(team1))
+        await ctx.send("Team 2: " + str(team2))
     if playerCount < 8:
         missing = 8 - playerCount
         await ctx.send("Need " + str(missing) + " more players!")
