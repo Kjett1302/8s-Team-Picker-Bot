@@ -2,6 +2,7 @@ import random
 import numpy as np
 import discord
 import os
+from keep_running import keep_running
 
 from discord import message
 from discord.ext import commands
@@ -108,5 +109,5 @@ async def removePlayer(ctx):
     if TF == False:
         await ctx.send(userNameParsed + " has NOT been removed, please verify player pool for spelling.")
 
-
+keep_running()
 bot.run(token)
